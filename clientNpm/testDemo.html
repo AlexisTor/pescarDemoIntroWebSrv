@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Test API Service</title>
+
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <style>
+
+table {
+    width: 100%;
+  }
+  
+  th {
+    height: 70px;
+  }
+
+
+
+    </style>
+    <body>
+        <div id="data">
+       
+       <table id="table1" align = center border='1.5' cellpadding='1' cellspacing='1'>
+       <thead>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Profession</td>
+       </thead>
+       </table>
+       </div>
+       <input type="button" onclick="cargar()" value="Cargar usuarios">
+       <br>
+       <span id="messages">
+           Mensaje del sistema
+       </span>
+       <script type="text/javascript">
+       //        $(document).ready(function(){
+            function cargar(){
+                //alert("a ver que onda?");
+                $("messages").html("");
+                   var val = "";
+                       event.preventDefault();
+                       $.ajax({
+                           type: "GET",
+                           dataType:"json",
+                           url:  "http://localhost:3001/users",
+                           success: function(data) {
+                            //alert("funco");
+
+                                if(data){
+                                    var len = data.length;
+                                    var txt = "";
+                                    if(len > 0){
+                                        for(var i=0;i<len;i++){
+                                            if(data[i].id && data[i].name && data[i].profession){
+                                                txt += "<tr><td>"+data[i].id+"</td><td>"+data[i].name+"</td><td>"+data[i].profession+"</td></tr>";
+                                            }
+                                        }
+                                        $("#table1").find("tr:gt(0)").remove();
+                                        if(txt != ""){
+                                            $("#table1").append(txt).removeClass("hidden");
+                                        }
+                                    }
+                                    var hora=new Date().toISOString().replace(/\D/g,"").substr(0,14);
+                                    var txtMessage = "<br>"+ hora + " :: OK! :: ";
+                                    $("#messages").append(txtMessage).removeClass("hidden");
+                                }
+                           },
+                           error: function(jqXHR, textStatus, errorThrown) {
+                            //alert("NO funco");
+                            var hora=new Date().toISOString().replace(/\D/g,"").substr(0,14);
+                            var txt = "<br>"+ hora + " :: Error in processing! :: "+textStatus;
+                                $("#messages").append(txt).removeClass("hidden");
+                           }
+                       });
+            //});
+                    }
+           </script>
+        </body>
+</html>
