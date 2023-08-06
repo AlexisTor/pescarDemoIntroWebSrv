@@ -1,0 +1,26 @@
+[
+  {
+    "name": "king arthur",
+    "password": "password1",
+    "profession": "king",
+    "id": 1
+  },
+  {
+    "name": "Alexis",
+    "password": "al3x1s",
+    "profession": "time_waster",
+    "id": 4
+  },
+  {
+    "name": "rob kendal",
+    "password": "password3",
+    "profession": "code fiddler",
+    "id": 2
+  },
+  {
+    "name": "teresa may",
+    "password": "password2",
+    "profession": "brexit destroyer",
+    "id": 6
+  }
+]
