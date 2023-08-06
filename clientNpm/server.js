@@ -4,13 +4,15 @@
 var http = require('http');
 var fs = require('fs');
 var express = require('express');
+var path = require('path');
 
 const PORT=8080; 
 const app = express();
 
 app.use('/css', express.static('public'));
+var testDemoFile = path.join(__dirname, "testDemo.html");
 
-fs.readFile('./testDemo.html', function (err, html) {
+fs.readFile(testDemoFile, function (err, html) {
 
     console.log("listening on port %s...", PORT);
 

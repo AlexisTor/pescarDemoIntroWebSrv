@@ -1,6 +1,7 @@
+var path = require('path');
 const userRoutes = (app, fs) => {
   // variables
-  const dataPath = "./data/users.json";
+  const dataPath = path.join(__dirname, "../data/users.json");
 
   // READ
   app.get("/users", (req, res) => {

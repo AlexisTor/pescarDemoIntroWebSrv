@@ -10,6 +10,7 @@ const PORT=3001;
 // we'll load up node's built in file system helper library here
 // (we'll be using this later to serve our JSON files
 const fs = require("fs");
+var path = require('path');
 
 // configure our express instance with some body-parser settings
 // including handling JSON data
@@ -17,7 +18,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // this is where we'll handle our various routes from
-const routes = require("./routes/routes.js")(app, fs);
+var routesFile = path.join(__dirname, "routes/routes.js");
+const routes = require(routesFile)(app, fs);
 
 // finally, launch our server on port 3001.
 const server = app.listen(PORT, () => {

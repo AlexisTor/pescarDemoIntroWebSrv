@@ -6,6 +6,12 @@
     "id": 1
   },
   {
+    "name": "Alexis",
+    "password": "al3x1s",
+    "profession": "time_waster",
+    "id": 4
+  },
+  {
     "name": "rob kendal",
     "password": "password3",
     "profession": "code fiddler",
